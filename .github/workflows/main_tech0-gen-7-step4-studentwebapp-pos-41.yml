@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./Step4_POSapp_front/my-app  # package.jsonが存在するディレクトリを指定
+        working-directory: ./Step4_POSapp_front/my-app  # 正しいパスを指定
 
       - name: Build and test
         run: |
