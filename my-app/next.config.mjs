@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone'
-  }
-  
-  module.exports = nextConfig
+    output: 'standalone',
+};
+
+// ESモジュール形式でエクスポート
+export default nextConfig;
