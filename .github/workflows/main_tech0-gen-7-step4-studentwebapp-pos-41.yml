@@ -31,6 +31,9 @@ jobs:
           npm run test --if-present
         working-directory: ./my-app
 
+      - name: List files before zipping
+        run: ls -R ./my-app  # 圧縮するファイルを確認
+
       - name: Zip artifact for deployment
         run: zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
         working-directory: ./my-app  # my-appディレクトリを指定
@@ -42,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app  # アーティファクト名
-          path: release.zip  # アップロードするファイルのパス
+          path: ./my-app/release.zip  # アップロードするファイルのパス
 
   deploy:
     runs-on: ubuntu-latest
