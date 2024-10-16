@@ -20,17 +20,17 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./my-app  # 直接my-appを指定
+        working-directory: ./my-app
 
       - name: Build and test
         run: |
           npm run build --if-present
           npm run test --if-present
-        working-directory: ./my-app  # 同様に指定
+        working-directory: ./my-app
 
       - name: Zip artifact for deployment
         run: zip -r release.zip .  # フォルダ内のすべてを圧縮
-        working-directory: ./my-app  # アーティファクトを圧縮するディレクトリを指定
+        working-directory: ./my-app
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -53,7 +53,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-        working-directory: ./my-app  # アーティファクトを解凍するディレクトリを指定
+        working-directory: ./my-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'tech0-gen-7-step4-studentwebapp-pos-41'
           slot-name: 'Production'
-          package: ./my-app  # デプロイ対象をmy-appに設定
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8C948BE4920349EEB0EB8B26DF553605 }}
+          package: ./my-app
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFIL }}
