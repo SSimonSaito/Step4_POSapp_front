@@ -35,7 +35,10 @@ jobs:
         run: ls -R ./my-app  # 圧縮するファイルを確認
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
+        run: |
+          echo "Creating release.zip..."
+          zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
+          echo "release.zip created."
         working-directory: ./my-app  # my-appディレクトリを指定
 
       - name: List files after zipping
@@ -45,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app  # アーティファクト名
-          path: ./my-app/release.zip  # アップロードするファイルのパスを修正
+          path: ./my-app/release.zip  # アップロードするファイルのパス
 
   deploy:
     runs-on: ubuntu-latest
@@ -72,3 +75,4 @@ jobs:
           slot-name: 'Production'
           package: ./my-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFIL }}
+
