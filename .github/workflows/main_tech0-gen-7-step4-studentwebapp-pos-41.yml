@@ -29,13 +29,13 @@ jobs:
         working-directory: ./my-app  # 同様に指定
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .  # フォルダ内のすべてを圧縮
         working-directory: ./my-app  # アーティファクトを圧縮するディレクトリを指定
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app
+          name: node-app  # アーティファクト名
           path: release.zip
 
   deploy:
@@ -49,7 +49,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app
+          name: node-app  # 同じアーティファクト名
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'tech0-gen-7-step4-studentwebapp-pos-41'
           slot-name: 'Production'
-          package: .
+          package: ./my-app  # デプロイ対象をmy-appに設定
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8C948BE4920349EEB0EB8B26DF553605 }}
