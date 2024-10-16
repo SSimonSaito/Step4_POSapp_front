@@ -1,4 +1,4 @@
-name: Deploy Node.js project to function app
+name: Deploy Node.js project to Function App
 
 on:
   push:
@@ -9,8 +9,8 @@ jobs:
   build-and-deploy:
     runs-on: windows-latest
     env:
-      AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' 
-      AZURE_FUNCTIONAPP_NAME: '(作成した Function App の名前)'
+      AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'  # パッケージのパスを指定
+      AZURE_FUNCTIONAPP_NAME: 'tech0-gen-7-step4-studentwebapp-pos-41'  # Function Appの名前を指定
       NODE_VERSION: '14.x'                     
     steps:
       - name: 'Checkout GitHub Action'
@@ -29,6 +29,7 @@ jobs:
           npm run build --if-present
           npm run test --if-present
           popd
+
       - name: Run Azure Functions Action
         uses: Azure/functions-action@v1
         id: fa
