@@ -14,10 +14,10 @@ jobs:
       NODE_VERSION: '20.x'  # Node.jsのバージョンを更新                     
     steps:
       - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v2  # 最新のバージョンに更新
+        uses: actions/checkout@v3  # 最新のバージョンに更新
 
       - name: Setup Node ${{ env.NODE_VERSION }} Environment
-        uses: actions/setup-node@v2  # 最新のバージョンに更新
+        uses: actions/setup-node@v3  # 最新のバージョンに更新
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -33,7 +33,7 @@ jobs:
       - name: Azure Login  # Azureログインアクションを追加
         uses: azure/login@v1
         with:
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}  # 発行プロファイルを使用してログイン
+          creds: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}  # 発行プロファイルを使用してログイン
 
       - name: Run Azure Functions Action
         uses: Azure/functions-action@v1
@@ -41,4 +41,3 @@ jobs:
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}  # 必要に応じて設定
