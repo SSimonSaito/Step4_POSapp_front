@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src/app/globals.css */
+body {
+  background-color: #E6E6FA; /* 薄紫の背景色 */
+  margin: 0; /* デフォルトのマージンをリセット */
+  font-family: Arial, sans-serif; /* フォントを設定（任意） */
+}
+
+input {
+  color: black; /* 入力した数字の色を黒に設定 */
+  padding: 8px; /* 入力フィールドの内側の余白 */
+  margin: 10px 0; /* 入力フィールドの上下の余白を10pxに設定 */
+  border: 1px solid #ccc; /* 境界線を追加 */
+  border-radius: 4px; /* 角を丸める */
+  width: 100%; /* 幅を100%に設定 */
+  box-sizing: border-box; /* 幅の計算にパディングと境界線を含める */
+}
+
+button {
+  background-color: #B22222; /* エンジ色（暗い赤色） */
+  color: white; /* ボタンのテキスト色 */
+  padding: 10px; /* ボタンの内側の余白 */
+  border: none; /* ボタンの境界線を削除 */
+  border-radius: 4px; /* 角を丸める */
+  cursor: pointer; /* カーソルをポインターにする */
+  font-size: 16px; /* フォントサイズ */
+  width: 200px; /* ボタンの幅を200pxに設定 */
+  margin: 10px; /* ボタンの周りに余白を設定 */
+  transition: background-color 0.3s; /* ホバー時のトランジション効果 */
+}
+
+button:hover {
+  background-color: #8B0000; /* ホバー時の色（さらに暗い赤色） */
+}
+
+h1 {
+  background-color: #800080; /* 濃い紫の背景色 */
+  color: white; /* 文字色を白に設定 */
+  padding: 10px; /* 内側の余白 */
+  border-radius: 5px; /* 角を丸める */
+  text-align: center; /* 中央揃え */
+  font-weight: bold; /* 太字 */
+}
+
+h2, h3 {
+  margin-top: 20px; /* 見出しの上部マージンを20pxに設定 */
+}
+
+.button-container {
+  display: flex; /* フレックスボックスを使用 */
+  flex-direction: column; /* 縦に並べる */
+  align-items: center; /* 中央揃え */
+}
+
+.purchase-list {
+  background-color: white; /* 背景を白に設定 */
+  border: 2px solid #800080; /* 紫色の枠を設定 */
+  border-radius: 5px; /* 角を丸める */
+  padding: 10px; /* 内側の余白 */
+  margin: 10px 0; /* 上下の余白 */
+}
+
+.total-amount {
+  font-weight: bold; /* 太字 */
+  text-transform: uppercase; /* 大文字 */
+  margin-top: 20px; /* 上部マージン */
+}
