@@ -29,14 +29,15 @@ jobs:
         working-directory: ./my-app
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip .  # フォルダ内のすべてを圧縮
-        working-directory: ./my-app  # my-app内のすべてを圧縮
+        run: |
+          cd my-app  # my-appディレクトリに移動
+          zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app  # アーティファクト名
-          path: release.zip  # アップロードするファイル
+          path: my-app/release.zip  # アップロードするファイルのパス
 
   deploy:
     runs-on: ubuntu-latest
