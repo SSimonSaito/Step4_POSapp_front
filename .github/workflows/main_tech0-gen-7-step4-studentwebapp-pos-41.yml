@@ -22,6 +22,9 @@ jobs:
         run: npm install
         working-directory: ./my-app
 
+      - name: List files before build
+        run: ls -R ./my-app  # 圧縮前のファイルを表示
+
       - name: Build and test
         run: |
           npm run build --if-present
@@ -32,14 +35,14 @@ jobs:
         run: zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
         working-directory: ./my-app  # my-appディレクトリを指定
 
-      - name: List files in my-app
-        run: ls -R ./my-app  # my-app内のファイルをリスト表示
+      - name: List files after zipping
+        run: ls -R ./my-app  # 圧縮後のファイルを表示
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app  # アーティファクト名
-          path: release.zip  # アップロードするファイルのパスを修正
+          path: release.zip  # アップロードするファイルのパス
 
   deploy:
     runs-on: ubuntu-latest
