@@ -32,6 +32,9 @@ jobs:
         run: zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
         working-directory: ./my-app  # my-appディレクトリを指定
 
+      - name: List files in my-app
+        run: ls -R ./my-app  # my-app内のファイルをリスト表示
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
