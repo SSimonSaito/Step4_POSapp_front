@@ -78,8 +78,14 @@ export default function Home() {
         <h2>{productName}</h2> {/* 商品名称表示エリア */}
         <p>単価: {productPrice}円</p>
       </div>
+      
+      <label htmlFor="quantity" style={{ display: 'block', marginTop: '20px' }}>
+        数量を入力してください:
+      </label>
       <input
+        id="quantity"
         type="number"
+        className="quantity-input" // クラスを追加
         value={quantity}
         onChange={(e) => {
           const value = Number(e.target.value);
@@ -87,10 +93,11 @@ export default function Home() {
             setQuantity(value);
           }
         }}
-        placeholder="数量"
+        placeholder="0〜99の数量を入力"
         min={0}
         max={99}
       />
+      
       <div className="button-container">
         <button onClick={handleAddToList}>商品リストへ追加</button>
       </div>

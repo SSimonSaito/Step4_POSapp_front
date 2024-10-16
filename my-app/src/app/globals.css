@@ -68,3 +68,20 @@ h2, h3 {
   text-transform: uppercase; /* 大文字 */
   margin-top: 20px; /* 上部マージン */
 }
+
+
+input {
+  color: black; /* 入力した数字の色を黒に設定 */
+  padding: 8px; /* 入力フィールドの内側の余白 */
+  margin: 10px 0; /* 入力フィールドの上下の余白を10pxに設定 */
+  border: 1px solid #ccc; /* 境界線を追加 */
+  border-radius: 4px; /* 角を丸める */
+  width: 100%; /* 幅を100%に設定 */
+  box-sizing: border-box; /* 幅の計算にパディングと境界線を含める */
+}
+
+.quantity-input {
+  border-color: #800080; /* 紫色の境界線 */
+  background-color: #f9f9f9; /* 明るいグレーの背景色 */
+}
+
