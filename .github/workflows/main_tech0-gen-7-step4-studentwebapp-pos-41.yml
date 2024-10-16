@@ -29,9 +29,8 @@ jobs:
         working-directory: ./my-app
 
       - name: Zip artifact for deployment
-        run: |
-          cd my-app  # my-appディレクトリに移動
-          zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
+        run: zip -r release.zip .  # 現在のディレクトリ内のすべてを圧縮
+        working-directory: ./my-app  # my-appディレクトリを指定
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -53,8 +52,8 @@ jobs:
           name: node-app  # 同じアーティファクト名
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
-        working-directory: ./my-app
+        run: unzip release.zip  # アーティファクトを解凍
+        working-directory: ./my-app  # 解凍するディレクトリを指定
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
