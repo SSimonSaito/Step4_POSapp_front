@@ -1,16 +1,23 @@
-// src/app/page.tsx
 "use client";
 
 import { useState } from 'react';
 import axios from 'axios';
 import './globals.css'; // 同じディレクトリ内のCSSファイルをインポート
 
+// 購入アイテムの型を定義
+interface PurchaseItem {
+  name: string;
+  quantity: number;
+  price: number;
+  total: number;
+}
+
 export default function Home() {
   const [productCode, setProductCode] = useState('');
   const [productName, setProductName] = useState('商品名称を表示'); // 初期値を設定
   const [productPrice, setProductPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [purchaseList, setPurchaseList] = useState([]);
+  const [purchaseList, setPurchaseList] = useState<PurchaseItem[]>([]); // 型を明示的に指定
   const [totalAmount, setTotalAmount] = useState(0);
   const [purchaseMessage, setPurchaseMessage] = useState(''); // 購入メッセージの状態を追加
 
