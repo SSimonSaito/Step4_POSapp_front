@@ -14,7 +14,7 @@ interface PurchaseItem {
 
 // Result型を定義
 interface Result {
-  text: string; // 例: バーコードの内容を示すプロパティ
+  text: string; // バーコードの内容を示すプロパティ
 }
 
 export default function Home() {
@@ -104,7 +104,7 @@ export default function Home() {
             if (err) {
               handleError(err);
             } else if (result) {
-              handleScan(result);
+              handleScan(result); // resultをそのままhandleScanに渡します
             }
           }} />
         </div>
