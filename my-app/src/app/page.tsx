@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>POSアプリ</h1>
+      <h1>🐶POSアプリ🐶</h1>
       <input
         type="text"
         value={productCode}
