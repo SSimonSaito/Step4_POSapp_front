@@ -1,9 +1,8 @@
-name: Build and deploy Node.js app to Azure Web App - tech0-gen-7-step4-studentwebapp-pos-41
+name: Deploy Node.js project to Function App
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -57,11 +56,15 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: "Deploy to Azure Web App"
+      - name: Azure Login  # Azureログインアクションを追加
+        uses: azure/login@v1  # 最新のバージョンに更新
+        with:
+          creds: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}  # 発行プロファイルを使用してログイン
+
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "tech0-gen-7-step4-studentwebapp-pos-41"
           slot-name: "Production"
           package: ./deploy
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E5A6C81DC1E240B9B2EFB199DB553E5C }}
