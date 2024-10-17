@@ -88,7 +88,7 @@ export default function Home() {
     console.error('バーコードスキャンエラー:', err);
   };
 
-  // ここからがJSXの開始部分です
+  // JSX部分の開始
   return (
     <div>
       <h1>🐶POSアプリ🐶</h1>
@@ -147,3 +147,27 @@ export default function Home() {
 
       <div className="button-container">
         <button onClick={handleAddToList}>商品リストへ追加</button>
+      </div>
+
+      <h3>購入品目リスト</h3>
+      <div className="purchase-list">
+        <ul>
+          {purchaseList.map((item, index) => (
+            <li key={index}>
+              {item.name} - 数量: {item.quantity} - 単価: {item.price}円 - 合計: {item.total}円
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 className="total-amount">合計金額: {totalAmount}円</h3>
+
+      <div className="button-container">
+        <button onClick={handlePurchase}>購入</button>
+        <button onClick={handleClearList}>クリア</button>
+      </div>
+
+      {purchaseMessage && <h3 style={{ textAlign: 'center', color: 'green' }}>{purchaseMessage}</h3>}
+    </div>
+  );
+}
