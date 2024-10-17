@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import { BarcodeScanner } from 'react-qr-barcode-scanner';
+import BarcodeScanner from 'react-qr-barcode-scanner';
 import './globals.css';
 
 interface PurchaseItem {
