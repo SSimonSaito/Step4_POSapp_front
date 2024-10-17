@@ -27,9 +27,9 @@ jobs:
       - name: Copy artifact for deployment job
         run: |
           mkdir deploy
-          if [ -d "my-app/.next/standalone/" ]; then cp -r my-app/.next/standalone/. ./deploy; fi  # Next.jsのスタンドアロンファイルをコピー
-          if [ -d "my-app/public" ]; then cp -r my-app/public ./deploy; fi  # 公開フォルダをコピー
-          if [ -d "my-app/.next/static/" ]; then cp -r my-app/.next/static/. ./deploy/.next/static; fi  # 静的ファイルをコピー
+          if [ -d "my-app/.next/standalone/" ]; then cp -r my-app/.next/standalone/. ./deploy; fi
+          if [ -d "my-app/public" ]; then cp -r my-app/public ./deploy; fi
+          if [ -d "my-app/.next/static/" ]; then cp -r my-app/.next/static/. ./deploy/.next/static; fi
 
       - name: Zip artifact for deployment
         run: zip release.zip ./deploy -r
@@ -56,8 +56,8 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: Azure Login  # Azureログインアクションを追加
-        uses: azure/login@v1  # 最新のバージョンに更新
+      - name: Azure Login
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}  # 発行プロファイルを使用してログイン
 
