@@ -12,9 +12,9 @@ interface PurchaseItem {
   total: number;
 }
 
-// Result型をインポートするか定義する必要があります
+// Result型を定義します（必要に応じて適切なプロパティを追加してください）
 interface Result {
-  text: string; // Resultの構造に応じて必要なプロパティを定義
+  text: string; // 例: バーコードの内容を示すプロパティ
 }
 
 export default function Home() {
@@ -103,7 +103,7 @@ export default function Home() {
             if (err) {
               handleError(err);
             } else if (result) { // resultがundefinedでないことを確認
-              handleScan(result);
+              handleScan(result); // resultをそのままhandleScanに渡します
             }
           }} />
         </div>
@@ -145,28 +145,4 @@ export default function Home() {
       />
 
       <div className="button-container">
-        <button onClick={handleAddToList}>商品リストへ追加</button>
-      </div>
-
-      <h3>購入品目リスト</h3>
-      <div className="purchase-list">
-        <ul>
-          {purchaseList.map((item, index) => (
-            <li key={index}>
-              {item.name} - 数量: {item.quantity} - 単価: {item.price}円 - 合計: {item.total}円
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <h3 className="total-amount">合計金額: {totalAmount}円</h3>
-
-      <div className="button-container">
-        <button onClick={handlePurchase}>購入</button>
-        <button onClick={handleClearList}>クリア</button>
-      </div>
-
-      {purchaseMessage && <h3 style={{ textAlign: 'center', color: 'green' }}>{purchaseMessage}</h3>}
-    </div>
-  );
-}
+        <button onClick={handl
