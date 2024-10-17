@@ -93,7 +93,13 @@ export default function Home() {
 
       {scanning && (
         <div>
-          <BarcodeScanner onUpdate={(err, result) => (err ? handleError(err) : handleScan(result))} />
+          <BarcodeScanner onUpdate={(err, result) => {
+            if (err) {
+              handleError(err);
+            } else if (result) { // resultがundefinedでないことを確認
+              handleScan(result);
+            }
+          }} />
         </div>
       )}
 

@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
-    experimental: {
-        buildCache: true, // ビルドキャッシュを有効にする設定
-    },
+    // buildCacheオプションは削除
 };
 
 // ESモジュール形式でエクスポート
