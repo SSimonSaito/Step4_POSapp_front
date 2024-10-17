@@ -12,7 +12,7 @@ interface PurchaseItem {
   total: number;
 }
 
-// Result型を定義します（必要に応じて適切なプロパティを追加してください）
+// Result型を定義
 interface Result {
   text: string; // 例: バーコードの内容を示すプロパティ
 }
@@ -88,6 +88,7 @@ export default function Home() {
     console.error('バーコードスキャンエラー:', err);
   };
 
+  // ここからがJSXの開始部分です
   return (
     <div>
       <h1>🐶POSアプリ🐶</h1>
@@ -102,8 +103,8 @@ export default function Home() {
           <BarcodeScanner onUpdate={(err, result) => {
             if (err) {
               handleError(err);
-            } else if (result) { // resultがundefinedでないことを確認
-              handleScan(result); // resultをそのままhandleScanに渡します
+            } else if (result) {
+              handleScan(result);
             }
           }} />
         </div>
@@ -145,4 +146,4 @@ export default function Home() {
       />
 
       <div className="button-container">
-        <button onClick={handl
+        <button onClick={handleAddToList}>商品リストへ追加</button>
