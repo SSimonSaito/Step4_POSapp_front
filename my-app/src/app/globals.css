@@ -4,7 +4,7 @@
 
 /* src/app/globals.css */
 body {
-  background-color: #E6E6FA; /* 薄紫の背景色 */
+  background-color: #f8e0b5; /* ベージュの背景色 */
   margin: 0; /* デフォルトのマージンをリセット */
   font-family: Arial, sans-serif; /* フォントを設定（任意） */
 }
@@ -37,7 +37,7 @@ button:hover {
 }
 
 h1 {
-  background-color: #800080; /* 濃い紫の背景色 */
+  background-color: #1d0401; /* 濃い黒の背景色 */
   color: white; /* 文字色を白に設定 */
   padding: 10px; /* 内側の余白 */
   border-radius: 5px; /* 角を丸める */
