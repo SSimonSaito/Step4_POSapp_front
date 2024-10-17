@@ -12,6 +12,11 @@ interface PurchaseItem {
   total: number;
 }
 
+// Result型をインポートするか定義する必要があります
+interface Result {
+  text: string; // Resultの構造に応じて必要なプロパティを定義
+}
+
 export default function Home() {
   const [productCode, setProductCode] = useState('');
   const [productName, setProductName] = useState('商品名称を表示');
@@ -70,9 +75,10 @@ export default function Home() {
   };
 
   // スキャンしたバーコードを処理
-  const handleScan = (data: string | null) => {
+  const handleScan = (data: string | Result | null) => {
     if (data) {
-      setProductCode(data);
+      const code = typeof data === 'string' ? data : data.text; // resultからtextを取得
+      setProductCode(code);
       setScanning(false); // スキャン完了
       handleFetchProduct(); // 商品情報を取得
     }
